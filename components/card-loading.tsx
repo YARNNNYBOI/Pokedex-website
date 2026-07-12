@@ -1,12 +1,11 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Loader2 } from "lucide-react";
+import SkeletonPokedex from "./skeleton/skeleton-pokedex";
 
 export function CardLoading() {
   return (
-    <Card className="flex justify-center items-center h-screen">
-      <CardContent>
-        <Loader2 className="animate-spin h-50 w-50" />
-      </CardContent>
-    </Card>
+    <div className="grid grid-cols-4 gap-4 mx-2">
+      {Array.from({ length: 20 }).map((_, i) => (
+        <SkeletonPokedex key={i} />
+      ))}
+    </div>
   );
 }
