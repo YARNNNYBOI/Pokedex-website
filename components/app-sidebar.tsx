@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import Image from "next/image";
+import Image from "next/image"
 import { NavDocuments } from "@/components/nav-documents"
 import { NavMain } from "@/components/nav-main"
 import { NavSecondary } from "@/components/nav-secondary"
@@ -16,8 +16,24 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { LayoutDashboardIcon, ListIcon, ChartBarIcon, FolderIcon, UsersIcon, CameraIcon, FileTextIcon, Settings2Icon, CircleHelpIcon, SearchIcon, DatabaseIcon, FileChartColumnIcon, FileIcon, CommandIcon } from "lucide-react"
-
+import {
+  LayoutDashboardIcon,
+  ListIcon,
+  Users,
+  ChartBarIcon,
+  FolderIcon,
+  UsersIcon,
+  CameraIcon,
+  FileTextIcon,
+  Settings2Icon,
+  CircleHelpIcon,
+  SearchIcon,
+  DatabaseIcon,
+  FileChartColumnIcon,
+  FileIcon,
+  CommandIcon,
+  User2Icon,
+} from "lucide-react"
 
 const data = {
   user: {
@@ -29,151 +45,121 @@ const data = {
     {
       title: "Dashboard",
       url: "/dashboard",
-      icon: (
-        <LayoutDashboardIcon
-        />
-      ),
+      icon: <LayoutDashboardIcon />,
     },
     {
       title: "Pokedex",
       url: "/dashboard/pokedex",
-      icon: (
-        <ListIcon
-        />
-      ),
+      icon: <ListIcon />,
     },
-  //   {
-  //     title: "Analytics",
-  //     url: "#",
-  //     icon: (
-  //       <ChartBarIcon
-  //       />
-  //     ),
-  //   },
-  //   {
-  //     title: "Projects",
-  //     url: "#",
-  //     icon: (
-  //       <FolderIcon
-  //       />
-  //     ),
-  //   },
-  //   {
-  //     title: "Team",
-  //     url: "#",
-  //     icon: (
-  //       <UsersIcon
-  //       />
-  //     ),
-  //   },
-  // ],
-  // navClouds: [
-  //   {
-  //     title: "Capture",
-  //     icon: (
-  //       <CameraIcon
-  //       />
-  //     ),
-  //     isActive: true,
-  //     url: "#",
-  //     items: [
-  //       {
-  //         title: "Active Proposals",
-  //         url: "#",
-  //       },
-  //       {
-  //         title: "Archived",
-  //         url: "#",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     title: "Proposal",
-  //     icon: (
-  //       <FileTextIcon
-  //       />
-  //     ),
-  //     url: "#",
-  //     items: [
-  //       {
-  //         title: "Active Proposals",
-  //         url: "#",
-  //       },
-  //       {
-  //         title: "Archived",
-  //         url: "#",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     title: "Prompts",
-  //     icon: (
-  //       <FileTextIcon
-  //       />
-  //     ),
-  //     url: "#",
-  //     items: [
-  //       {
-  //         title: "Active Proposals",
-  //         url: "#",
-  //       },
-  //       {
-  //         title: "Archived",
-  //         url: "#",
-  //       },
-  //     ],
-  //   },
+    {
+      title: "My Team",
+      url: "/dashboard/my-team",
+      icon: <Users />,
+    },
+    {
+      title: "Play Pokemon Red",
+      url: "/play",
+      icon: <FolderIcon />,
+    },
+    //   {
+    //     title: "Team",
+    //     url: "#",
+    //     icon: (
+    //       <UsersIcon
+    //       />
+    //     ),
+    //   },
+    // ],
+    // navClouds: [
+    //   {
+    //     title: "Capture",
+    //     icon: (
+    //       <CameraIcon
+    //       />
+    //     ),
+    //     isActive: true,
+    //     url: "#",
+    //     items: [
+    //       {
+    //         title: "Active Proposals",
+    //         url: "#",
+    //       },
+    //       {
+    //         title: "Archived",
+    //         url: "#",
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     title: "Proposal",
+    //     icon: (
+    //       <FileTextIcon
+    //       />
+    //     ),
+    //     url: "#",
+    //     items: [
+    //       {
+    //         title: "Active Proposals",
+    //         url: "#",
+    //       },
+    //       {
+    //         title: "Archived",
+    //         url: "#",
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     title: "Prompts",
+    //     icon: (
+    //       <FileTextIcon
+    //       />
+    //     ),
+    //     url: "#",
+    //     items: [
+    //       {
+    //         title: "Active Proposals",
+    //         url: "#",
+    //       },
+    //       {
+    //         title: "Archived",
+    //         url: "#",
+    //       },
+    //     ],
+    //   },
   ],
   navSecondary: [
     {
       title: "Settings",
       url: "#",
-      icon: (
-        <Settings2Icon
-        />
-      ),
+      icon: <Settings2Icon />,
     },
     {
       title: "Get Help",
       url: "#",
-      icon: (
-        <CircleHelpIcon
-        />
-      ),
+      icon: <CircleHelpIcon />,
     },
     {
       title: "Search",
       url: "#",
-      icon: (
-        <SearchIcon
-        />
-      ),
+      icon: <SearchIcon />,
     },
   ],
   documents: [
     {
       name: "Data Library",
       url: "#",
-      icon: (
-        <DatabaseIcon
-        />
-      ),
+      icon: <DatabaseIcon />,
     },
     {
       name: "Reports",
       url: "#",
-      icon: (
-        <FileChartColumnIcon
-        />
-      ),
+      icon: <FileChartColumnIcon />,
     },
     {
       name: "Word Assistant",
       url: "#",
-      icon: (
-        <FileIcon
-        />
-      ),
+      icon: <FileIcon />,
     },
   ],
 }
@@ -187,7 +173,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               className="data-[slot=sidebar-menu-button]:p-10!"
               render={<a href="/dashboard" />}
             >
-              <Image 
+              <Image
                 className="flex items-center justify-between"
                 src="https://loodibee.com/wp-content/uploads/International-Pokemon-logo.png"
                 alt="Pokemon Logo"

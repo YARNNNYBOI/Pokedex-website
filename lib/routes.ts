@@ -7,6 +7,7 @@ export async function getPokemon(name: string) {
 
 export async function getPokemonList() {
     const res = await axios.get("https://pokeapi.co/api/v2/pokemon")
+    console.log(res.data)
     return res.data
 }
 
