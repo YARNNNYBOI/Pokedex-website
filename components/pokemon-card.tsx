@@ -20,56 +20,81 @@ import {
 } from "@/components/ui/dialog"
 import Link from "next/link"
 import { Button } from "./ui/button"
+import { Badge } from "./ui/badge"
+import { typeColors } from "@/lib/pokemon-colors"
+import { id } from "zod/v4/locales"
 
-export default function PokemonCard({ name }: { name: string }) {
+type PokemonCardProps = {
+  name: string
+  typePrimary: string
+  typeSecondary: string | null
+  pokedex_number: number
+}
+
+export default function PokemonCard({
+  name,
+  typePrimary,
+  typeSecondary,
+  pokedex_number,
+}: PokemonCardProps) {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['speciesList', name],
-    queryFn: () => getPokemon(name),
-  });
+    queryKey: ["pokemonImage", name],
+    queryFn: () => getPokemon(name.toLowerCase()),
+  })
 
-  if (isLoading) return <Card><CardContent></CardContent></Card>;
-  if (error) return <Card><CardContent></CardContent></Card>;
+  const types = [typePrimary, typeSecondary].filter(Boolean) as string[]
+  const imageUrl = data?.sprites?.other?.["official-artwork"]?.front_default
+
+  const typeBadges = (
+    <div className="flex gap-1">
+      {types.map((t) => (
+        <Badge key={t} style={{ backgroundColor: typeColors[t.toLowerCase()] }}>
+          {t}
+        </Badge>
+      ))}
+    </div>
+  )
 
   return (
     <Dialog>
       <DialogTrigger
         nativeButton={false}
         render={
-          <Card className="cursor-pointer hover:shadow-md transition-shadow">
+          <Card className="cursor-pointer transition-shadow hover:shadow-md">
             <CardHeader>
-              <CardTitle>{data.name}</CardTitle>
-              <CardDescription>
-                {data.types.map((t: any) => t.type.name).join(", ")}
-              </CardDescription>
+              <CardTitle>
+                {name} <br /> #{pokedex_number}
+              </CardTitle>
+              <CardDescription>{typeBadges}</CardDescription>
             </CardHeader>
-            <CardContent className="flex justify-center items-center">
-              <img
-                src={data.sprites.other["official-artwork"].front_default}
-                alt={data.name}
-                className="flex size-40 items-center"
-              />
+            <CardContent className="flex size-60 items-center justify-center">
+              {isLoading && <span>Loading...</span>}
+              {error && <span>No image</span>}
+              {imageUrl && (
+                <img
+                  src={imageUrl}
+                  alt={name}
+                  className="max-h-full max-w-full object-contain"
+                />
+              )}
             </CardContent>
           </Card>
         }
       />
       <DialogContent showCloseButton={false}>
-        <DialogHeader className="flex flex-row items-center justify-between">{data.name}
-          <Link href={`/dashboard/pokedex/${name}`}>
+        <DialogHeader className="flex flex-row items-center justify-between">
+          {name}
+          <Link href={`/dashboard/pokedex/${name.toLowerCase()}`}>
             <Button variant={"outline"}>View Details</Button>
           </Link>
         </DialogHeader>
-        <DialogTitle>
-          {data.types.map((t: any) => t.type.name).join(", ")}
-        </DialogTitle>
-        <DialogDescription className="flex justify-center items-center">
-          <img
-            src={data.sprites.other["official-artwork"].front_default}
-            alt={data.name}
-            className="flex size-40 items-center"
-          />
+        <DialogTitle>{typeBadges}</DialogTitle>
+        <DialogDescription className="flex items-center justify-center">
+          {imageUrl && (
+            <img src={imageUrl} alt={name} className="size-40 object-contain" />
+          )}
         </DialogDescription>
       </DialogContent>
     </Dialog>
-
   )
 }
