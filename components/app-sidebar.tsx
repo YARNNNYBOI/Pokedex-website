@@ -18,21 +18,12 @@ import {
 } from "@/components/ui/sidebar"
 import {
   LayoutDashboardIcon,
-  ListIcon,
   Users,
-  ChartBarIcon,
   FolderIcon,
-  UsersIcon,
-  CameraIcon,
-  FileTextIcon,
   Settings2Icon,
   CircleHelpIcon,
   SearchIcon,
-  DatabaseIcon,
-  FileChartColumnIcon,
-  FileIcon,
-  CommandIcon,
-  User2Icon,
+  ListIcon,
 } from "lucide-react"
 
 const data = {
@@ -48,9 +39,9 @@ const data = {
       icon: <LayoutDashboardIcon />,
     },
     {
-      title: "Pokedex",
-      url: "/dashboard/pokedex",
-      icon: <ListIcon />,
+      title: "My Pokemon",
+      url: "/dashboard/my-pokemon",
+      icon: <Users />,
     },
     {
       title: "My Team",
@@ -62,71 +53,6 @@ const data = {
       url: "/play",
       icon: <FolderIcon />,
     },
-    //   {
-    //     title: "Team",
-    //     url: "#",
-    //     icon: (
-    //       <UsersIcon
-    //       />
-    //     ),
-    //   },
-    // ],
-    // navClouds: [
-    //   {
-    //     title: "Capture",
-    //     icon: (
-    //       <CameraIcon
-    //       />
-    //     ),
-    //     isActive: true,
-    //     url: "#",
-    //     items: [
-    //       {
-    //         title: "Active Proposals",
-    //         url: "#",
-    //       },
-    //       {
-    //         title: "Archived",
-    //         url: "#",
-    //       },
-    //     ],
-    //   },
-    //   {
-    //     title: "Proposal",
-    //     icon: (
-    //       <FileTextIcon
-    //       />
-    //     ),
-    //     url: "#",
-    //     items: [
-    //       {
-    //         title: "Active Proposals",
-    //         url: "#",
-    //       },
-    //       {
-    //         title: "Archived",
-    //         url: "#",
-    //       },
-    //     ],
-    //   },
-    //   {
-    //     title: "Prompts",
-    //     icon: (
-    //       <FileTextIcon
-    //       />
-    //     ),
-    //     url: "#",
-    //     items: [
-    //       {
-    //         title: "Active Proposals",
-    //         url: "#",
-    //       },
-    //       {
-    //         title: "Archived",
-    //         url: "#",
-    //       },
-    //     ],
-    //   },
   ],
   navSecondary: [
     {
@@ -147,19 +73,9 @@ const data = {
   ],
   documents: [
     {
-      name: "Data Library",
-      url: "#",
-      icon: <DatabaseIcon />,
-    },
-    {
-      name: "Reports",
-      url: "#",
-      icon: <FileChartColumnIcon />,
-    },
-    {
-      name: "Word Assistant",
-      url: "#",
-      icon: <FileIcon />,
+      name: "Pokedex",
+      url: "/dashboard/pokedex",
+      icon: <ListIcon />,
     },
   ],
 }
